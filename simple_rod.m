@@ -56,8 +56,9 @@ while frac > 10^-2
 	loops = loops + 1;
     
     old_array = temp_array;
-    
 end
+
+temp_array = temp_array(2:num+1);
 
 
 
