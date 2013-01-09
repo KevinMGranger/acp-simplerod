@@ -29,34 +29,36 @@ function [ temp_array ]  =  simple_rod ( num, TL, TR )
 
     MATH
 
+    VARIABLE NAMING
+
 %}
 
 
 
-PSEUDOCODE:
+% PSEUDOCODE:
+% 
+% check starting values
+% 	tl, tr > 0
+% 	num > 0
 
-check starting values
-	tl, tr > 0
-	num > 0
+old_array = [ TL (ones(1,num) * mean([TL TR])) TR];
+temp_array = old_array;
+frac = 1;
+loops = 0;
 
-old_array: tl, num, tr
+while frac > 10^-2
+    
+    for i=2:num+1
+		temp_array(i) = (old_array(i-1) + old_array(i+1)) / 2;
+    end
+	frac = max(abs(temp_array - old_array) ./ old_array);
 
-do
-	new_array = old_array
-	for array at 2 to array at end-1
+	loops = loops + 1;
+    
+    old_array = temp_array;
+    
+end
 
-		DO SOME MATH FOR EACH PIECE, EACH STEP
-		%apparently not using that method?
-		%check first difference
-		%check second difference
-	end
-
-	frac = abs(new - old) / old
-
-	loops++ (for tracking)
-while frac change is > 10^-2
-
-return temp_array
 
 
 % vim:tw=76 fdm=marker fmr=%{,%}
