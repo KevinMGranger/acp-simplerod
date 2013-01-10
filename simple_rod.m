@@ -35,12 +35,13 @@ function [ temp_array ]  =  simple_rod ( num, TL, TR )
 
 
 
-% PSEUDOCODE:
-% 
-% check starting values
-% 	tl, tr > 0
-% 	num > 0
 
+% Check starting values :
+if TL < 0 || TR < 0
+    error('Temperatures are given in Kelvin, and as such must be above absolute zero.')
+elseif num < 1 || rem(num,1) ~= 0
+    error('You must give a positive, nonzero, integer number of pieces to break the rod into.')
+end
 old_array = [ TL (ones(1,num) * mean([TL TR])) TR];
 temp_array = old_array;
 frac = 1;
