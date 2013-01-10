@@ -45,9 +45,10 @@ end
 old_array = [ TL (ones(1,num) * mean([TL TR])) TR];
 temp_array = old_array;
 frac = 1;
+convergence = 0.01 / num;
 loops = 0;
 
-while frac > 10^-2
+while frac > convergence
     
     for i=2:num+1
 		temp_array(i) = (old_array(i-1) + old_array(i+1)) / 2;
