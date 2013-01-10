@@ -88,9 +88,6 @@ frac = 1;
 % The data needs to be more accurate as the rod is broken into more pieces.
 convergence = 0.01 / num;
 
-% Count the number of loops, for debugging / statistics purposes.
-loops = 0;
-
 % Keep iterating until the fractional change is less than our determined
 % convergence factor.
 while frac > convergence
@@ -111,9 +108,6 @@ while frac > convergence
     % matter if the one on the end isn't changing much, if we're still
     % calculating the center pieces, keep going!
 	frac = max(abs(temp_array - old_array) ./ old_array);
-
-    % DEBUG / STAT purposes.
-	loops = loops + 1;
     
     % What's new is old. Take our new values and get ready to use them for
     % next time, if there is a next time.
