@@ -88,10 +88,11 @@ frac = 1;
 % The data needs to be more accurate as the rod is broken into more pieces.
 convergence = 0.01 / num;
 
+loop = 0;
 % Keep iterating until the fractional change is less than our determined
 % convergence factor.
 while frac > convergence
-    
+    loop = loop + 1;
     % For each piece of rod, calculate the average temperature between the
     % two other pieces.
     % Since the array also includes the two non-changing values at the end,
@@ -117,6 +118,7 @@ end
 % Shave off the temperatures of the left and right ends, giving back only
 % the temperatures of the pieces of the rod.
 temp_array = temp_array(2:num+1);
+loop
 
 
 
