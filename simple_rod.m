@@ -117,7 +117,3 @@ end
 % Shave off the temperatures of the left and right ends, giving back only
 % the temperatures of the pieces of the rod.
 temp_array = temp_array(2:num+1);
-
-
-
-% vim:tw=76 fdm=marker fmr=%{,%}
