@@ -91,7 +91,7 @@ convergence = 0.01 / num;
 loop = 0;
 % Keep iterating until the fractional change is less than our determined
 % convergence factor.
-while frac > convergence
+while frac > 0
     loop = loop + 1;
     % For each piece of rod, calculate the average temperature between the
     % two other pieces.
@@ -108,7 +108,7 @@ while frac > convergence
     % We care about the maximum fractional change for any piece. It doesn't
     % matter if the one on the end isn't changing much, if we're still
     % calculating the center pieces, keep going!
-	frac = max(abs(temp_array - old_array) ./ old_array);
+	frac = max(diff(diff(temp_array)));
     
     % What's new is old. Take our new values and get ready to use them for
     % next time, if there is a next time.
